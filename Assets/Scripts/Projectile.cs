@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
+    public ProjectileData projectileData;
 
     private void FixedUpdate()
     {
@@ -21,7 +22,10 @@ public class Projectile : MonoBehaviour
     {
         if(_collision.gameObject.layer == 6)
         {
-            Destroy(_collision.gameObject);
+            EnemyBehavior _enemyHit = _collision.gameObject.GetComponent<EnemyBehavior>();
+            _enemyHit.enemyData.health -= projectileData.damageDealt;
+
+            //Destroy(_collision.gameObject);
         }
     }
 
