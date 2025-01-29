@@ -6,6 +6,7 @@ public class EnemyBehavior : MonoBehaviour
 {
     public EnemyData enemyData;
     private GameManager gameManager;
+    [SerializeField] float health;
 
     private void Start()
     {
@@ -14,8 +15,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public void OnHit(float _damage)
     {
-        enemyData.health -= _damage;
-        if(enemyData.health <= 0)
+        health -= _damage;
+        if(health <= 0)
         {
             gameManager.score += enemyData.scoreWhenDead;
             Destroy(gameObject);
