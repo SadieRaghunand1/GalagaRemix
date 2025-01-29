@@ -10,8 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
 
-    [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectileDefault;
+    [SerializeField] GameObject projectileQuick;
     [SerializeField] private float yOffset;
+
+    [SerializeField] float shootDefaultCooldown;
+    private bool canShootDefault = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Append Shoot() to shoot action
         playerControls.Player.Shoot.started += _ => Shoot();
+
+        //Append ShootQuick to shoot action
+        playerControls.Player.ShootQuick.started += _ => ShootQuick();
     } //End InitValues()
 
     /// <summary>
@@ -61,12 +68,29 @@ public class PlayerMovement : MonoBehaviour
     } //END Walk()
 
     /// <summary>
-    /// Shoot projectile on button press
+    /// Shoot projectile on button press, works for default projectile
     /// </summary>
     private void Shoot()
     {
-        Debug.Log("Shoot");
-        Instantiate(projectile, new Vector2(transform.position.x, transform.position.y + yOffset), projectile.transform.rotation);
+        if (canShootDefault) 
+        {
+            Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
+            StartCoroutine(ShootCooldown());
+        }
+        
         
     } //END Shoot
+
+    private void ShootQuick()
+    {
+        Instantiate(projectileQuick, new Vector2(transform.position.x, transform.position.y + yOffset), projectileQuick.transform.rotation);
+    } //END ShootQuick()
+
+
+    private IEnumerator ShootCooldown()
+    {
+        canShootDefault = false;
+        yield return new WaitForSeconds(shootDefaultCooldown);
+        canShootDefault = true;
+    } //END ShootCooldow()
 }

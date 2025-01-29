@@ -44,6 +44,15 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootQuick"",
+                    ""type"": ""Button"",
+                    ""id"": ""673eba3e-cbf4-4e29-941c-7b1fce49cb88"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,17 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35495ed6-a11e-4dab-8989-5594a2744ce6"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ShootQuick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -145,6 +165,7 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_ShootQuick = m_Player.FindAction("ShootQuick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -208,12 +229,14 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_ShootQuick;
     public struct PlayerActions
     {
         private @PlayerController1 m_Wrapper;
         public PlayerActions(@PlayerController1 wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @ShootQuick => m_Wrapper.m_Player_ShootQuick;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -229,6 +252,9 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @ShootQuick.started += instance.OnShootQuick;
+            @ShootQuick.performed += instance.OnShootQuick;
+            @ShootQuick.canceled += instance.OnShootQuick;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -239,6 +265,9 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @ShootQuick.started -= instance.OnShootQuick;
+            @ShootQuick.performed -= instance.OnShootQuick;
+            @ShootQuick.canceled -= instance.OnShootQuick;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -269,5 +298,6 @@ public partial class @PlayerController1: IInputActionCollection2, IDisposable
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnShootQuick(InputAction.CallbackContext context);
     }
 }

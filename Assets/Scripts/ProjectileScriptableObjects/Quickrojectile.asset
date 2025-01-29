@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66ec4ccdeee87a04c800442f53175657, type: 3}
-  m_Name: ProjectileType1
+  m_Name: Quickrojectile
   m_EditorClassIdentifier: 
-  enemyName: DefaultShoot
-  skin: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  damageDealt: 1
+  enemyName: QuickShoot
+  skin: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  damageDealt: 0.5
