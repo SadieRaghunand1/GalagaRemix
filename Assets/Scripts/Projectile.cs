@@ -23,9 +23,10 @@ public class Projectile : MonoBehaviour
         if(_collision.gameObject.layer == 6)
         {
             EnemyBehavior _enemyHit = _collision.gameObject.GetComponent<EnemyBehavior>();
-            _enemyHit.enemyData.health -= projectileData.damageDealt;
+            _enemyHit.OnHit(projectileData.damageDealt);
+            Destroy(this.gameObject);
 
-            //Destroy(_collision.gameObject);
+            
         }
     }
 

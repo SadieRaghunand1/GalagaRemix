@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 242686703703528826}
   speed: 5
+  projectileData: {fileID: 11400000, guid: d85243d0a3ca73c46a80a5b16a0b774a, type: 2}
 --- !u!70 &-2282389609955204305
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

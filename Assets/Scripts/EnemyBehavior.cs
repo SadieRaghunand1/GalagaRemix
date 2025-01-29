@@ -5,16 +5,20 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public EnemyData enemyData;
+    private GameManager gameManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnHit(float _damage)
     {
-        
+        enemyData.health -= _damage;
+        if(enemyData.health <= 0)
+        {
+            gameManager.score += enemyData.scoreWhenDead;
+            Destroy(gameObject);
+        }
     }
 }
