@@ -8,4 +8,5 @@ public class EnemyData : ScriptableObject
 {
     public float health;
     public float scoreWhenDead;
+    public float speed;
 }
