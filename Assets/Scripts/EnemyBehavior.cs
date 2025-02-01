@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour
     public EnemyData enemyData;
     private GameManager gameManager;
     [SerializeField] float health;
+    [SerializeField] GameObject bullet;
 
     private void Start()
     {
@@ -21,5 +22,11 @@ public class EnemyBehavior : MonoBehaviour
             gameManager.score += enemyData.scoreWhenDead;
             Destroy(gameObject);
         }
+    }
+
+
+    private void Shoot()
+    {
+
     }
 }
