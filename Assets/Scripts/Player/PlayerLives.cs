@@ -11,6 +11,7 @@ public class PlayerLives : MonoBehaviour
 
     public void GetHit()
     {
+        Debug.Log("Player Hit");
 
         --lives;
         //healthUI[lives].enabled = false;
