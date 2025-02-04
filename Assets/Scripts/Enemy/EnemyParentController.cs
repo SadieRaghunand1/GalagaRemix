@@ -32,11 +32,14 @@ public class EnemyParentController : MonoBehaviour
     void AssignWaypointSet()
     {
         int _n = 0;
+        int _delay = 0;
         for(int i = 0; i < enemies.Count; i++)
         {
             if(_n == 4)
             {
                 _n = 0;
+                _delay++;
+                
             }
 
             switch(_n)
@@ -51,9 +54,10 @@ public class EnemyParentController : MonoBehaviour
                     enemies[i].waypoints = topRightEntrance; break;
             }
 
+            StartCoroutine(enemies[i].DelayEntrance(_delay));
             _n++;
 
-            //enemies[i].waypoints = 
+            
           
         }
     }

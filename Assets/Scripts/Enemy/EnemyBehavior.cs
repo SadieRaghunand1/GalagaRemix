@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
 
 
     public EnemyData enemyData;
+    public float speed;
     private GameManager gameManager;
     [SerializeField] float health;
     [SerializeField] GameObject projectile;
@@ -42,7 +43,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         gameManager = FindFirstObjectByType<GameManager>();
         controller = FindFirstObjectByType<EnemyParentController>();
-        
         //Test
         //StartCoroutine(TimeShoot());
         transform.position = waypoints[0].transform.position;
@@ -83,10 +83,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (waypointIndex <= waypoints.Length - 1)
         {
-            Debug.Log("Waypoint index = " + waypointIndex);
+            //Debug.Log("Waypoint index = " + waypointIndex);
 
             //Moves enemy to next waypoint
-            rb.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, enemyData.speed * Time.deltaTime);
+            rb.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, speed * Time.deltaTime);
 
             //Checks if is in waypoint position
             if (transform.position == waypoints[waypointIndex].transform.position)
@@ -111,7 +111,7 @@ public class EnemyBehavior : MonoBehaviour
         //If enemy just got into patrol state and is not in position yet
         if(rb.position != new Vector2(patrolPoint.transform.position.x, patrolPoint.transform.position.y))
         {
-            rb.position = Vector2.MoveTowards(transform.position, patrolPoint.transform.position, enemyData.speed * Time.deltaTime);
+            rb.position = Vector2.MoveTowards(transform.position, patrolPoint.transform.position, speed * Time.deltaTime);
         }
         //If enemy is in patrol position, follows grid side to side pattern
         else if(rb.position == new Vector2(patrolPoint.transform.position.x, patrolPoint.transform.position.y))
@@ -129,10 +129,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (currentDiveIndex <= divingPathPoints.Length - 1)
         {
-            Debug.Log("Waypoint index = " + waypointIndex);
+            //Debug.Log("Waypoint index = " + waypointIndex);
 
             //Moves enemy to next waypoint
-            rb.position = Vector2.MoveTowards(transform.position, divingPathPoints[currentDiveIndex].transform.position, enemyData.speed * Time.deltaTime);
+            rb.position = Vector2.MoveTowards(transform.position, divingPathPoints[currentDiveIndex].transform.position, speed * Time.deltaTime);
 
             //Checks if is in waypoint position
             if (transform.position == divingPathPoints[currentDiveIndex].transform.position)
@@ -180,4 +180,14 @@ public class EnemyBehavior : MonoBehaviour
             Shoot();
         }
     } //END TimeShoot()
+
+
+    public IEnumerator DelayEntrance(int _delay)
+    {
+        
+        speed = 0;
+        
+        yield return new WaitForSeconds(_delay);
+        speed = enemyData.speed;
+    }
 }
