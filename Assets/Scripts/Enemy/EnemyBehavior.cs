@@ -26,9 +26,10 @@ public class EnemyBehavior : MonoBehaviour
     public State state;
 
     [Header("Movement - entering")]
-    [SerializeField] private GameObject[] waypoints;
+    public GameObject[] waypoints = new GameObject[23];
     private int waypointIndex = 0;
     [SerializeField] private Rigidbody2D rb;
+    private EnemyParentController controller;
 
     [Header("Movement - Patrol")]
     public GameObject patrolPoint;
@@ -40,7 +41,8 @@ public class EnemyBehavior : MonoBehaviour
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-
+        controller = FindFirstObjectByType<EnemyParentController>();
+        
         //Test
         //StartCoroutine(TimeShoot());
         transform.position = waypoints[0].transform.position;
@@ -51,6 +53,9 @@ public class EnemyBehavior : MonoBehaviour
         MoveBasedOnState();
         
     }
+
+
+    
 
     /// <summary>
     /// Switches movement patterns based on state

@@ -5,23 +5,77 @@ using UnityEngine;
 public class EnemyParentController : MonoBehaviour
 {
     public GameObject[] enemiesToSpawn;
-    [SerializeField] private EnemyBehavior[] enemyChildren;
-    [SerializeField] private GameObject[] spawnPos;
-    [SerializeField] private Animator animator;
+    public List<EnemyBehavior> enemies;
+   
+
+    [Header("Waypoints")]
+    [SerializeField] private GameObject[] bottomLeftEntrance;
+    [SerializeField] private GameObject[] topLeftEntrance;
+    [SerializeField] private GameObject[] bottomRightEntrance;
+    [SerializeField] private GameObject[] topRightEntrance;
+    [SerializeField] private GameObject[] patrolPoints;
+    [SerializeField] private GameObject[] divePath1;
+    [SerializeField] private GameObject[] divePath2;
+    [SerializeField] private GameObject[] divePath3;
+    
+
 
     private void Start()
     {
-        SpawnEnemies();
+        //SpawnEnemies();
+        
+        AssignPatrolPoints();
     }
 
 
-    public void SpawnEnemies()
+
+    void AssignWaypointSet()
     {
-        for(int i = 0; i < spawnPos.Length; i++)
+        int _n = 0;
+        for(int i = 0; i < enemies.Count; i++)
         {
-            //For testing, just spawning in the one enemy
-            enemyChildren[i] = Instantiate(enemiesToSpawn[0], spawnPos[i].transform.position, enemiesToSpawn[0].transform.rotation).GetComponent<EnemyBehavior>();
-            enemyChildren[i].transform.parent = spawnPos[i].transform;
+            if(_n == 4)
+            {
+                _n = 0;
+            }
+
+            switch(_n)
+            {
+                case 0:
+                    enemies[i].waypoints = bottomLeftEntrance; break;
+                case 1:
+                    enemies[i].waypoints = topLeftEntrance; break;
+                case 2:
+                    enemies[i].waypoints = bottomRightEntrance; break;
+                case 3:
+                    enemies[i].waypoints = topRightEntrance; break;
+            }
+
+            _n++;
+
+            //enemies[i].waypoints = 
+          
         }
+    }
+
+    void AssignPatrolPoints()
+    {
+        //Find all enemies
+        EnemyBehavior[] _enemies = FindObjectsByType<EnemyBehavior>(FindObjectsSortMode.None);
+        //Delete previous enemies for new wave
+        enemies.Clear();
+
+        //Add enemies in this wave to list
+        for (int i = 0; i < _enemies.Length; i++)
+        {
+            enemies.Add(_enemies[i]);
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].patrolPoint = patrolPoints[i];
+        }
+
+        AssignWaypointSet();
     }
 }
