@@ -45,13 +45,21 @@ public class EnemyParentController : MonoBehaviour
             switch(_n)
             {
                 case 0:
-                    enemies[i].waypoints = bottomLeftEntrance; break;
+                    enemies[i].waypoints = bottomLeftEntrance;
+                    enemies[i].gameObject.transform.position = bottomLeftEntrance[0].transform.position;
+                    break;
                 case 1:
-                    enemies[i].waypoints = topLeftEntrance; break;
+                    enemies[i].waypoints = topLeftEntrance;
+                    enemies[i].gameObject.transform.position = topLeftEntrance[0].transform.position;
+                    break;
                 case 2:
-                    enemies[i].waypoints = bottomRightEntrance; break;
+                    enemies[i].waypoints = bottomRightEntrance;
+                    enemies[i].gameObject.transform.position = bottomRightEntrance[0].transform.position;
+                    break;
                 case 3:
-                    enemies[i].waypoints = topRightEntrance; break;
+                    enemies[i].waypoints = topRightEntrance;
+                    enemies[i].gameObject.transform.position = topRightEntrance[0].transform.position;
+                    break;
             }
 
             StartCoroutine(enemies[i].DelayEntrance(_delay));

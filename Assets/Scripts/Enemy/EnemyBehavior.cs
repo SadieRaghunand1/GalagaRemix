@@ -37,15 +37,18 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("Movement - Diving")]
     public GameObject[] divingPathPoints;
-    private int currentDiveIndex;
+    private int currentDiveIndex = 0;
+    private int minTimeDive = 5;
+    private int maxTimeDive = 40;
 
     private void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         controller = FindFirstObjectByType<EnemyParentController>();
-        //Test
-        //StartCoroutine(TimeShoot());
-        transform.position = waypoints[0].transform.position;
+        
+        //transform.position = waypoints[0].transform.position;
+
+        StartCoroutine(TimeDive());
     }
 
     private void Update()
@@ -71,6 +74,10 @@ public class EnemyBehavior : MonoBehaviour
         {
             Patrol();
         }
+        else if(state == State.DIVING)
+        {
+            Dive();
+        }
 
 
     } //END MoveBasedOnState()
@@ -91,6 +98,7 @@ public class EnemyBehavior : MonoBehaviour
             //Checks if is in waypoint position
             if (transform.position == waypoints[waypointIndex].transform.position)
             {
+                //Debug.Log("Reached waypoint");
                 Debug.Log("Destination reached");
                 if (waypointIndex == waypoints.Length - 1)
                 {
@@ -116,7 +124,7 @@ public class EnemyBehavior : MonoBehaviour
         //If enemy is in patrol position, follows grid side to side pattern
         else if(rb.position == new Vector2(patrolPoint.transform.position.x, patrolPoint.transform.position.y))
         {
-            Debug.Log("In position to patrol");
+            //Debug.Log("In position to patrol");
             transform.parent = patrolPoint.transform;
         }
         
@@ -127,10 +135,10 @@ public class EnemyBehavior : MonoBehaviour
     /// </summary>
     private void Dive()
     {
+        transform.parent = null;
         if (currentDiveIndex <= divingPathPoints.Length - 1)
         {
-            //Debug.Log("Waypoint index = " + waypointIndex);
-
+            Debug.Log("Waypoint index = " + currentDiveIndex);
             //Moves enemy to next waypoint
             rb.position = Vector2.MoveTowards(transform.position, divingPathPoints[currentDiveIndex].transform.position, speed * Time.deltaTime);
 
@@ -138,8 +146,13 @@ public class EnemyBehavior : MonoBehaviour
             if (transform.position == divingPathPoints[currentDiveIndex].transform.position)
             {
                 Debug.Log("Destination reached diving");
-                //Do sonething
-                waypointIndex += 1;
+                if (currentDiveIndex == divingPathPoints.Length - 1)
+                {
+                    state = State.PATROL;
+                    currentDiveIndex = 0;
+                    return;
+                }
+                currentDiveIndex += 1;
             }
         }
 
@@ -178,6 +191,7 @@ public class EnemyBehavior : MonoBehaviour
         if(state == State.DIVING)
         {
             Shoot();
+            StartCoroutine(TimeShoot());
         }
     } //END TimeShoot()
 
@@ -189,5 +203,13 @@ public class EnemyBehavior : MonoBehaviour
         
         yield return new WaitForSeconds(_delay);
         speed = enemyData.speed;
+    }
+
+    private IEnumerator TimeDive()
+    {
+        int _waitTime = Random.Range(minTimeDive, maxTimeDive);
+        yield return new WaitForSeconds(_waitTime);
+        state = State.DIVING;
+        StartCoroutine(TimeShoot());
     }
 }
