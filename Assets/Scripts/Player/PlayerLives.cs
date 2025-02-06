@@ -8,6 +8,7 @@ public class PlayerLives : MonoBehaviour
     int lives = 3;
     [SerializeField] private Animator animator;
     [SerializeField] private Image[] healthUI;
+    [SerializeField] private GameObject playerCopy;
 
     public void GetHit()
     {

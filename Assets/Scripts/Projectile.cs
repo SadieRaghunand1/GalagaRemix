@@ -20,17 +20,24 @@ public class Projectile : MonoBehaviour
         HitEnemy(collision, layer);
     }
 
-    void HitEnemy(Collision2D _collision, int _layer)
+    virtual protected void HitEnemy(Collision2D _collision, int _layer)
     {
         if(_collision.gameObject.layer == _layer)
         {
-            if(_layer == 6)
+            if(_layer == 6) //Hits enemy, player shoots
             {
                 EnemyBehavior _enemyHit = _collision.gameObject.GetComponent<EnemyBehavior>();
                 _enemyHit.OnHit(projectileData.damageDealt);
                 Destroy(this.gameObject);
+
+                if(_enemyHit.gameObject.GetComponent<StealerEnemyBehavior>() != null)
+                {
+                    StealerEnemyBehavior _stealer = _enemyHit.gameObject.GetComponent<StealerEnemyBehavior>();
+                    _stealer.LoseShip();
+                    
+                }
             }
-            else if(_layer == 8)
+            else if(_layer == 8) //Hits player, enemy shoots
             {
                 PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
                 _playerLives.GetHit();
