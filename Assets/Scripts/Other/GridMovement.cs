@@ -58,7 +58,8 @@ public class GridMovement : MonoBehaviour
     {
         
         speed = 0;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         speed = baseSpeed;
+        count = 0;
     }
 }

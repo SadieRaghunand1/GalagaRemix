@@ -14,6 +14,8 @@ public class CaptureRay : Projectile
         {
             //shooter.StealShip();
             shooter.HitShipSteal();
+            PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+            _playerLives.GetHit();
             Destroy(this.gameObject);
         }
     }

@@ -168,6 +168,7 @@ public class EnemyBehavior : MonoBehaviour
         if(health <= 0)
         {
             gameManager.score += enemyData.scoreWhenDead;
+            gameManager.enemiesKilled++;
             Destroy(gameObject);
         }
     }//END OnHit()

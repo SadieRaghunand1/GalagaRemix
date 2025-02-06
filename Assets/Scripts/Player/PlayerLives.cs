@@ -8,7 +8,7 @@ public class PlayerLives : MonoBehaviour
     int lives = 3;
     [SerializeField] private Animator animator;
     [SerializeField] private Image[] healthUI;
-    [SerializeField] private GameObject playerCopy;
+    
 
     public void GetHit()
     {
@@ -22,6 +22,7 @@ public class PlayerLives : MonoBehaviour
         if (lives <= 0)
         {
             //Game over
+            Debug.Log("Game over :(");
         }
 
     }

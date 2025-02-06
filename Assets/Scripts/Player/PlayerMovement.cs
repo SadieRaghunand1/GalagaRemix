@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public bool doubleShip = false;
     public Sprite doublePlayer;
+    public Sprite normalPlayer;
 
     // Start is called before the first frame update
     void Awake()
@@ -97,8 +98,7 @@ public class PlayerMovement : MonoBehaviour
     {
         spriteRenderer.sprite = doublePlayer;
         doubleShip = true;
-        projectileDefault.GetComponent<Projectile>().projectileData.damageDealt *= 2;
-        projectileQuick.GetComponent<Projectile>().projectileData.damageDealt *= 2;
+        
     }
 
     private IEnumerator ShootCooldown()
