@@ -998,13 +998,14 @@ GameObject:
   m_Component:
   - component: {fileID: 139169298}
   - component: {fileID: 139169299}
+  - component: {fileID: 139169300}
   m_Layer: 0
   m_Name: BossSplit1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &139169298
 Transform:
   m_ObjectHideFlags: 0
@@ -1073,6 +1074,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &139169300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139169297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1f0b63e93bdba41abc25f3e522985c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 0}
+  health: 0
+  stage: 0
+  launchPos: []
+  projectile: {fileID: 0}
+  destPosS1: []
 --- !u!1 &144547149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,13 +2052,14 @@ GameObject:
   m_Component:
   - component: {fileID: 356705620}
   - component: {fileID: 356705621}
+  - component: {fileID: 356705622}
   m_Layer: 0
   m_Name: BossSplit1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &356705620
 Transform:
   m_ObjectHideFlags: 0
@@ -2108,6 +2128,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &356705622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356705619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1f0b63e93bdba41abc25f3e522985c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 0}
+  health: 0
+  stage: 0
+  launchPos: []
+  projectile: {fileID: 0}
+  destPosS1: []
 --- !u!1 &358487674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6572,7 +6610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1272606429
 MonoBehaviour:
   m_ObjectHideFlags: 0
