@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float speed;
+    [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected float speed;
     public ProjectileData projectileData;
     [SerializeField] int layer;
     [SerializeField] Vector2 direction;
@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
     }
 
 
-    void MoveForward()
+    virtual protected void MoveForward()
     {
         
         rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + direction * speed * Time.fixedDeltaTime);
