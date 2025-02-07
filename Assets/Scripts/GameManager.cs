@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public bool devMode; //If checked, delete high score at end of game
 
 
+    public int stage = 1;
+    public int enemiesKilled = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,12 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highScore", score);
         }
+    }
+
+    public void EnterBossStage()
+    {
+        stage = 2;
+        
     }
 
 }

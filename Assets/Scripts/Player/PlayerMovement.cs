@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float shootDefaultCooldown;
     private bool canShootDefault = true;
+    private SpriteRenderer spriteRenderer;
+    public bool doubleShip = false;
+    public Sprite doublePlayer;
+    public Sprite normalPlayer;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Append ShootQuick to shoot action
         playerControls.Player.ShootQuick.started += _ => ShootQuick();
+
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     } //End InitValues()
 
     /// <summary>
@@ -86,6 +93,13 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(projectileQuick, new Vector2(transform.position.x, transform.position.y + yOffset), projectileQuick.transform.rotation);
     } //END ShootQuick()
 
+
+    public void BecomeDouble()
+    {
+        spriteRenderer.sprite = doublePlayer;
+        doubleShip = true;
+        
+    }
 
     private IEnumerator ShootCooldown()
     {

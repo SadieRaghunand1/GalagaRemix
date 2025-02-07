@@ -6,7 +6,7 @@ public class EnemyParentController : MonoBehaviour
 {
     public GameObject[] enemiesToSpawn;
     public List<EnemyBehavior> enemies;
-   
+    public int enemiesKilled = 0;
 
     [Header("Waypoints")]
     [SerializeField] private GameObject[] bottomLeftEntrance;
@@ -17,6 +17,8 @@ public class EnemyParentController : MonoBehaviour
     [SerializeField] private GameObject[] divePath1;
     [SerializeField] private GameObject[] divePath2;
     [SerializeField] private GameObject[] divePath3;
+    [SerializeField] private GameObject[] divePath4;
+    [SerializeField] private GameObject[] divePath5;
     
 
 
@@ -32,7 +34,10 @@ public class EnemyParentController : MonoBehaviour
     void AssignWaypointSet()
     {
         int _n = 0;
+        int _m = 0;
         int _delay = 0;
+
+        //Assign entrance waypoints
         for(int i = 0; i < enemies.Count; i++)
         {
             if(_n == 4)
@@ -67,6 +72,36 @@ public class EnemyParentController : MonoBehaviour
 
             
           
+        }
+
+        //Assign dive waypoints
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if(_m == 5)
+            {
+                _m = 0;
+            }
+
+            switch(_m)
+            {
+                case 0:
+                    enemies[i].divingPathPoints = divePath1;
+                    break;
+                case 1:
+                    enemies[i].divingPathPoints = divePath2;
+                    break;
+                case 2:
+                    enemies[i].divingPathPoints = divePath3;
+                    break;
+                case 3:
+                    enemies[i].divingPathPoints = divePath4;
+                    break;
+                case 4:
+                    enemies[i].divingPathPoints = divePath5;
+                    break;
+            }
+
+            _m++;
         }
     }
 

@@ -9,6 +9,7 @@ public class EnemyBehavior : MonoBehaviour
         ENTERING,
         PATROL,
         DIVING,
+        STEALING,
         WAIT
 
     }
@@ -19,8 +20,8 @@ public class EnemyBehavior : MonoBehaviour
     public float speed;
     private GameManager gameManager;
     [SerializeField] float health;
-    [SerializeField] GameObject projectile;
-    [SerializeField] private float yOffset;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected float yOffset;
     [SerializeField] private float minTime;
     [SerializeField] private float maxTime;
 
@@ -41,7 +42,7 @@ public class EnemyBehavior : MonoBehaviour
     private int minTimeDive = 5;
     private int maxTimeDive = 40;
 
-    private void Start()
+    public void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         controller = FindFirstObjectByType<EnemyParentController>();
@@ -51,7 +52,7 @@ public class EnemyBehavior : MonoBehaviour
         StartCoroutine(TimeDive());
     }
 
-    private void Update()
+     public void Update()
     {
         MoveBasedOnState();
         
@@ -167,6 +168,7 @@ public class EnemyBehavior : MonoBehaviour
         if(health <= 0)
         {
             gameManager.score += enemyData.scoreWhenDead;
+            gameManager.enemiesKilled++;
             Destroy(gameObject);
         }
     }//END OnHit()

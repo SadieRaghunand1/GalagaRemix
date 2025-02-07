@@ -4,29 +4,77 @@ using UnityEngine;
 
 public class StealerEnemyBehavior : EnemyBehavior
 {
-
+    [Header("Ship stealing")]
     [SerializeField] private Animator rayAnimator;
+    [SerializeField] private GameObject rayObj;
     [SerializeField] private GameObject playerCopy;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject capturedPlayer;
+    private PlayerMovement playerScript;
+    public Sprite doublePlayer;
+    //[SerializeField] private GameObject capturedPlayer;
+    [SerializeField] private int stealMinTime;
+    [SerializeField] private int stealMaxTime;
+    [SerializeField] private Transform capturePos;
     private bool shipStolen = false;
+    private Rigidbody2D playerCopyRB;
 
-
+    private void Start()
+    {
+        base.Start();
+        player = FindAnyObjectByType<PlayerMovement>().gameObject;
+        playerScript = player.GetComponent<PlayerMovement>();
+        playerCopy = player.GetComponentInChildren<PlayerCopyID>().gameObject;
+        playerCopyRB = playerCopy.GetComponent<Rigidbody2D>();
+        //Test
+        StartCoroutine(TimeStealShip());
+    }
 
     private void Update()
     {
+        base.Update();
+
         if(shipStolen)
         {
-            capturedPlayer.GetComponent<Rigidbody2D>().MovePosition(transform.position);
+            Debug.Log("Ship stolen");
+            playerCopyRB.position = Vector2.MoveTowards(playerCopyRB.position, transform.position + new Vector3(0, yOffset, 0), (speed * 2) * Time.deltaTime); // + new Vector3(0, yOffset, 0)
+           // playerCopy.transform.position = capturePos.position;
         }
     }
 
-
-    void StealShip()
+    public void HitShipSteal()
     {
+        //capturedPlayer = Instantiate(playerCopy, player.transform.position, transform.rotation);
+        playerCopy.transform.parent = null;
+        playerCopy.transform.parent = transform;
+        playerCopy.GetComponent<SpriteRenderer>().enabled = true;
+        shipStolen = true;
+    }
+    
+    public void StealShip()
+    {
+        Debug.Log("Ship stolen call");
         //play ray animation or something
+        GameObject _ray = Instantiate(projectile, new Vector2(transform.position.x, transform.position.y + yOffset), projectile.transform.rotation);
+        CaptureRay _rayScript = _ray.GetComponent<CaptureRay>();
 
-        capturedPlayer = Instantiate(playerCopy, player.transform.position, transform.rotation);
-        capturedPlayer.transform.parent = transform;
+        _rayScript.shooter = this;
+        playerCopy.transform.position = capturePos.position;
+    }
+
+    public void LoseShip()
+    {
+        shipStolen=false;
+        playerCopy.GetComponent<SpriteRenderer>().enabled = false;
+        playerCopy.transform.position = player.transform.position;
+        playerScript.BecomeDouble();
+    }
+
+
+    IEnumerator TimeStealShip()
+    {
+        int _waitTime = Random.Range(stealMaxTime, stealMinTime);
+        yield return new WaitForSeconds(_waitTime);
+        StealShip();
+
     }
 }
