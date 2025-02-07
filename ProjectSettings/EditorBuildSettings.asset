@@ -5,14 +5,38 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/main menu.unity
-    guid: f165a2ea7a04e7c4ab1f62b8af4f92c4
   - enabled: 1
+    path: Assets/Scenes/mainMenu.unity
+    guid: 78148f1d05da4154793d46db4d36df6c
+  - enabled: 1
+    path: Assets/Scenes/Sadie_Test.unity
+    guid: c7aa9013b787e1e42bf0075fe384df4a
+  - enabled: 1
+    path: Assets/Scenes/options.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/aboutTitleScreen.unity
+    guid: 63925f63169887547a5eba25934106a3
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 3c2a47c51c1749949b4aad8fad3b7527
+  - enabled: 1
+    path: Assets/Scenes/lose.unity
+    guid: a0a72bd3b9e989b46be80bdfc1776d62
+  - enabled: 0
+    path: Assets/Scenes/aboutInGame.unity
+    guid: beed49088a6a5304e8fa7233b88a2e36
+  - enabled: 0
+    path: Assets/Scenes/options 2.unity
+    guid: f2a8505ee0a511d49b103dc5ec765cd5
+  - enabled: 0
     path: Assets/Scenes/paths 2.unity
     guid: 5a10a569260fd354280f0f8f49a2e7ee
   - enabled: 0
-    path: Assets/Scenes/settings.unity
-    guid: d5f36920c4329af4bbd7067630c10587
+    path: Assets/Scenes/pause test.unity
+    guid: b1cb7b5506d7bd5479f959961aee0d4e
+  - enabled: 0
+    path: Assets/Scenes/ENDGAME.unity
+    guid: acd4949d710c752418f8197a3ce4c527
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0bb7a536ba1b04f49910b8af080f6220, type: 2}
