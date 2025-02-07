@@ -85,19 +85,24 @@ public class EnemyParentController : MonoBehaviour
             switch(_m)
             {
                 case 0:
-                    enemies[i].divingPathPoints = divePath1;
+                    if (enemies[i] != null)
+                        enemies[i].divingPathPoints = divePath1;
                     break;
                 case 1:
-                    enemies[i].divingPathPoints = divePath2;
+                    if (enemies[i] != null)
+                        enemies[i].divingPathPoints = divePath2;
                     break;
                 case 2:
-                    enemies[i].divingPathPoints = divePath3;
+                    if (enemies[i] != null)
+                        enemies[i].divingPathPoints = divePath3;
                     break;
                 case 3:
-                    enemies[i].divingPathPoints = divePath4;
+                    if (enemies[i] != null)
+                        enemies[i].divingPathPoints = divePath4;
                     break;
                 case 4:
-                    enemies[i].divingPathPoints = divePath5;
+                    if (enemies[i] != null)
+                        enemies[i].divingPathPoints = divePath5;
                     break;
             }
 
