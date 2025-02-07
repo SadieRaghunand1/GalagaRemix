@@ -2279,7 +2279,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 1, y: 0.5}
+    newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2360,7 +2360,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   devMode: 0
-  stage: 0
+  stage: 1
   enemiesKilled: 0
 --- !u!114 &625368558
 MonoBehaviour:
@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b731eaa278e94f442a256f6195ff39b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 2093778438}
   isPause: 0
 --- !u!1 &631941772
 GameObject:
@@ -6362,7 +6362,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10480,7 +10480,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -10521,7 +10521,7 @@ MonoBehaviour:
   yOffset: 1
   shootDefaultCooldown: 1
   doubleShip: 0
-  doublePlayer: {fileID: 21300000, guid: 5079497c691f0c740a6f3cffa95fea8e, type: 3}
+  doublePlayer: {fileID: 0}
   normalPlayer: {fileID: 0}
 --- !u!50 &2056202577
 Rigidbody2D:
@@ -10587,7 +10587,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 1, y: 0.5}
+    newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -11187,51 +11187,8 @@ MonoBehaviour:
   - {fileID: 1489632956}
   - {fileID: 1621352551}
   - {fileID: 1664615215}
-  divePath4:
-  - {fileID: 1639314821}
-  - {fileID: 1942355693}
-  - {fileID: 2069622820}
-  - {fileID: 1380660066}
-  - {fileID: 6682283}
-  - {fileID: 1441513397}
-  - {fileID: 1501432063}
-  - {fileID: 1219709420}
-  - {fileID: 56283179}
-  - {fileID: 288601424}
-  - {fileID: 1975294993}
-  - {fileID: 532321031}
-  - {fileID: 1582924881}
-  - {fileID: 277781690}
-  - {fileID: 690514049}
-  - {fileID: 2090317491}
-  - {fileID: 1480776553}
-  - {fileID: 2053664496}
-  - {fileID: 1660347291}
-  - {fileID: 2030812997}
-  - {fileID: 1579127542}
-  - {fileID: 1623131938}
-  - {fileID: 1481139658}
-  - {fileID: 1725447525}
-  divePath5:
-  - {fileID: 1408856884}
-  - {fileID: 1693528618}
-  - {fileID: 697444383}
-  - {fileID: 312616776}
-  - {fileID: 248591336}
-  - {fileID: 1898414390}
-  - {fileID: 1652239877}
-  - {fileID: 1740601856}
-  - {fileID: 1172786639}
-  - {fileID: 1747942400}
-  - {fileID: 1464488315}
-  - {fileID: 425162166}
-  - {fileID: 1743344003}
-  - {fileID: 871466351}
-  - {fileID: 1899490451}
-  - {fileID: 1367734448}
-  - {fileID: 389578380}
-  - {fileID: 198785961}
-  - {fileID: 397862031}
+  divePath4: []
+  divePath5: []
 --- !u!4 &2126449400
 Transform:
   m_ObjectHideFlags: 0
