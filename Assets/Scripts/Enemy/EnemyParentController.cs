@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemyParentController : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class EnemyParentController : MonoBehaviour
     public List<EnemyBehavior> enemies;
     public int enemiesKilled = 0;
     private GameManager gameManager;
-    private float timer = 2;
+    private float timer = 30;
 
     [Header("Waypoints")]
     [SerializeField] private GameObject[] bottomLeftEntrance;
@@ -25,6 +27,9 @@ public class EnemyParentController : MonoBehaviour
 
     [Header("Switch to Boss")]
     [SerializeField] private GameObject bossParent;
+
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI timerText;
 
     private void Start()
     {
@@ -158,10 +163,12 @@ public class EnemyParentController : MonoBehaviour
     private void Timer()
     {
         timer -= Time.deltaTime;
+        timerText.text = "Wave 1: " + timer;
 
         if(timer <= 0 || gameManager.enemiesKilled == 40)
         {
             Debug.Log("Switch");
+            timerText.enabled = false;
             SwitchStages();
         }
     }

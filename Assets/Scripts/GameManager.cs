@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int stage = 1;
     public int enemiesKilled = 0;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,12 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("highScore", score);
         }
+    }
+
+    public void ChangeScore(float _scoreAdded, TextMeshProUGUI _scoreText)
+    {
+        score += _scoreAdded;
+        _scoreText.text = "Score: " + score;
     }
 
     public void EnterBossStage()

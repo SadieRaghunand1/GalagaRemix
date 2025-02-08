@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected float yOffset;
     [SerializeField] private float minTime;
     [SerializeField] private float maxTime;
-
+    [SerializeField] private TextMeshProUGUI scoreText;
     public State state;
 
     [Header("Movement - entering")]
@@ -100,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
             if (transform.position == waypoints[waypointIndex].transform.position)
             {
                 //Debug.Log("Reached waypoint");
-                Debug.Log("Destination reached");
+                //Debug.Log("Destination reached");
                 if (waypointIndex == waypoints.Length - 1)
                 {
                     state = State.PATROL;
@@ -139,14 +140,14 @@ public class EnemyBehavior : MonoBehaviour
         transform.parent = null;
         if (currentDiveIndex <= divingPathPoints.Length - 1)
         {
-            Debug.Log("Waypoint index = " + currentDiveIndex);
+            //Debug.Log("Waypoint index = " + currentDiveIndex);
             //Moves enemy to next waypoint
             rb.position = Vector2.MoveTowards(transform.position, divingPathPoints[currentDiveIndex].transform.position, speed * Time.deltaTime);
 
             //Checks if is in waypoint position
             if (transform.position == divingPathPoints[currentDiveIndex].transform.position)
             {
-                Debug.Log("Destination reached diving");
+                //Debug.Log("Destination reached diving");
                 if (currentDiveIndex == divingPathPoints.Length - 1)
                 {
                     state = State.PATROL;
@@ -167,7 +168,7 @@ public class EnemyBehavior : MonoBehaviour
         health -= _damage;
         if(health <= 0)
         {
-            gameManager.score += enemyData.scoreWhenDead;
+            gameManager.ChangeScore(enemyData.scoreWhenDead, scoreText);
             gameManager.enemiesKilled++;
             Destroy(gameObject);
         }

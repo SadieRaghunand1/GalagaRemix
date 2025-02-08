@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using TMPro;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BossBehavior : MonoBehaviour
     private GameManager gameManager;
     protected EnemyParentController controller;
     public float health;
-
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int stage;
 
     [Header("Shooting - Stage 1 + all")]
@@ -46,7 +47,7 @@ public class BossBehavior : MonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
-            gameManager.score += enemyData.scoreWhenDead;
+            gameManager.ChangeScore(enemyData.scoreWhenDead, scoreText);
 
             if(stage == 1)
             {

@@ -22,8 +22,11 @@ public class Projectile : MonoBehaviour
 
     virtual protected void HitEnemy(Collision2D _collision, int _layer)
     {
+        
         if(_collision.gameObject.layer == _layer)
         {
+            
+
             if(_layer == 6) //Hits enemy, player shoots
             {
                 EnemyBehavior _enemyHit = _collision.gameObject.GetComponent<EnemyBehavior>();
@@ -54,7 +57,7 @@ public class Projectile : MonoBehaviour
             {
                 PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
                 _playerLives.GetHit();
-                Debug.Log("Hit player");
+               
                 Destroy(this.gameObject);
             }
             

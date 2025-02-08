@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerLives : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement playerMovement;
     int lives = 3;
     [SerializeField] private Animator animator;
     [SerializeField] private Image[] healthUI;
@@ -15,7 +16,8 @@ public class PlayerLives : MonoBehaviour
         Debug.Log("Player Hit");
 
         --lives;
-        //healthUI[lives].enabled = false;
+        healthUI[lives].enabled = false;
+        playerMovement.BecomeSingle();
         //Play explosion animation
         //animator.SetTrigger()
 
