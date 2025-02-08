@@ -7,6 +7,8 @@ public class EnemyParentController : MonoBehaviour
     public GameObject[] enemiesToSpawn;
     public List<EnemyBehavior> enemies;
     public int enemiesKilled = 0;
+    private GameManager gameManager;
+    private float timer = 2;
 
     [Header("Waypoints")]
     [SerializeField] private GameObject[] bottomLeftEntrance;
@@ -19,17 +21,22 @@ public class EnemyParentController : MonoBehaviour
     [SerializeField] private GameObject[] divePath3;
     [SerializeField] private GameObject[] divePath4;
     [SerializeField] private GameObject[] divePath5;
-    
+    [SerializeField] private GameObject[] bossPatrolPts;
 
+    [Header("Switch to Boss")]
+    [SerializeField] private GameObject bossParent;
 
     private void Start()
     {
         //SpawnEnemies();
-        
+        gameManager = FindAnyObjectByType<GameManager>();
         AssignPatrolPoints();
     }
 
-
+    private void Update()
+    {
+        Timer();
+    }
 
     void AssignWaypointSet()
     {
@@ -75,39 +82,46 @@ public class EnemyParentController : MonoBehaviour
         }
 
         //Assign dive waypoints
-        for(int i = 0; i < enemies.Count; i++)
-        {
-            if(_m == 5)
+      
+            for (int i = 0; i < enemies.Count; i++)
             {
-                _m = 0;
-            }
+                if (_m == 5)
+                {
+                    _m = 0;
+                }
 
-            switch(_m)
-            {
-                case 0:
-                    if (enemies[i] != null)
-                        enemies[i].divingPathPoints = divePath1;
-                    break;
-                case 1:
-                    if (enemies[i] != null)
-                        enemies[i].divingPathPoints = divePath2;
-                    break;
-                case 2:
-                    if (enemies[i] != null)
-                        enemies[i].divingPathPoints = divePath3;
-                    break;
-                case 3:
-                    if (enemies[i] != null)
-                        enemies[i].divingPathPoints = divePath4;
-                    break;
-                case 4:
-                    if (enemies[i] != null)
-                        enemies[i].divingPathPoints = divePath5;
-                    break;
-            }
 
-            _m++;
-        }
+                switch (_m)
+                {
+                    case 0:
+                        if (enemies[i] != null)
+                            enemies[i].divingPathPoints = divePath1;
+                        break;
+                    case 1:
+                        if (enemies[i] != null)
+                            enemies[i].divingPathPoints = divePath2;
+                        break;
+                    case 2:
+                        if (enemies[i] != null)
+                            enemies[i].divingPathPoints = divePath3;
+                        break;
+                    case 3:
+                        if (enemies[i] != null)
+                            enemies[i].divingPathPoints = divePath4;
+                        break;
+                    case 4:
+                        if (enemies[i] != null)
+                            enemies[i].divingPathPoints = divePath5;
+                        break;
+                }
+
+                _m++;
+            }
+        
+
+
+
+
     }
 
     void AssignPatrolPoints()
@@ -125,9 +139,53 @@ public class EnemyParentController : MonoBehaviour
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            enemies[i].patrolPoint = patrolPoints[i];
+            if (enemies[i].gameObject.tag == "BossEnemyS3")
+            {
+                enemies[i].patrolPoint = bossPatrolPts[i];
+            }
+            else
+            {
+                enemies[i].patrolPoint = patrolPoints[i];
+            }
+            
         }
 
         AssignWaypointSet();
+    }
+
+
+    
+    private void Timer()
+    {
+        timer -= Time.deltaTime;
+
+        if(timer <= 0 || gameManager.enemiesKilled == 40)
+        {
+            Debug.Log("Switch");
+            SwitchStages();
+        }
+    }
+
+    public void SwitchStages()
+    {
+        gameManager.stage = 2;
+
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] != null)
+            {
+                enemies[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                continue;
+            }
+            
+        }
+
+
+        enemies.Clear();
+
+        bossParent.SetActive(true);
     }
 }

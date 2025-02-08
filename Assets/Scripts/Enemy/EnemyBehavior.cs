@@ -39,8 +39,8 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Movement - Diving")]
     public GameObject[] divingPathPoints;
     private int currentDiveIndex = 0;
-    private int minTimeDive = 5;
-    private int maxTimeDive = 40;
+    [SerializeField] int minTimeDive;
+    [SerializeField] int maxTimeDive;
 
     public void Start()
     {
