@@ -61,21 +61,29 @@ public class EnemyParentController : MonoBehaviour
 
             switch(_n)
             {
+                
                 case 0:
+                    Debug.Log("In switch for assign");
                     enemies[i].waypoints = bottomLeftEntrance;
                     enemies[i].gameObject.transform.position = bottomLeftEntrance[0].transform.position;
                     break;
                 case 1:
+                    Debug.Log("In switch for assign");
                     enemies[i].waypoints = topLeftEntrance;
                     enemies[i].gameObject.transform.position = topLeftEntrance[0].transform.position;
                     break;
                 case 2:
+                    Debug.Log("In switch for assign");
                     enemies[i].waypoints = bottomRightEntrance;
                     enemies[i].gameObject.transform.position = bottomRightEntrance[0].transform.position;
                     break;
                 case 3:
+                    Debug.Log("In switch for assign");
                     enemies[i].waypoints = topRightEntrance;
                     enemies[i].gameObject.transform.position = topRightEntrance[0].transform.position;
+                    break;
+                default:
+                    Debug.Log("Default");
                     break;
             }
 

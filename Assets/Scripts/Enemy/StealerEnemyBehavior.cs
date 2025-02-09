@@ -7,7 +7,7 @@ public class StealerEnemyBehavior : EnemyBehavior
     [Header("Ship stealing")]
     [SerializeField] private Animator rayAnimator;
     [SerializeField] private GameObject rayObj;
-    [SerializeField] private GameObject playerCopy;
+    public GameObject playerCopy;
     [SerializeField] private GameObject player;
     private PlayerMovement playerScript;
     public Sprite doublePlayer;
@@ -18,7 +18,7 @@ public class StealerEnemyBehavior : EnemyBehavior
     private bool shipStolen = false;
     private Rigidbody2D playerCopyRB;
 
-    private void Start()
+    private void Awake()
     {
         base.Start();
         player = FindAnyObjectByType<PlayerMovement>().gameObject;
@@ -59,6 +59,7 @@ public class StealerEnemyBehavior : EnemyBehavior
 
         _rayScript.shooter = this;
         playerCopy.transform.position = capturePos.position;
+        StartCoroutine(TimeStealShip());
     }
 
     public void LoseShip()

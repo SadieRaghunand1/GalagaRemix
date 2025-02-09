@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     public int stage = 1;
     public int enemiesKilled = 0;
 
+    [SerializeField] private TextMeshProUGUI highScoreText;
+
+    [Header("Choices")]
+    public bool defaultShip;
+    public bool cheatmode; 
+
     
 
     // Start is called before the first frame update
@@ -20,7 +26,19 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        ShowHighScore();
+    }
 
+    private void ShowHighScore()
+    {
+        if (PlayerPrefs.HasKey("highScore") == false)
+        {
+            highScoreText.text = "High Score: " + 0;
+        }
+        else
+        {
+            highScoreText.text = "High Score: " + PlayerPrefs.GetFloat("highScore");
+        }
     }
 
     public void InitializeHighScore()

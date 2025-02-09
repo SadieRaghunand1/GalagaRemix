@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -27,13 +28,14 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] protected GameObject likeEnemiesDead;
 
     [Header("Stage 3")]
-    [SerializeField] private S3Boss thisPhaseScrpt;
+    [SerializeField] private S3Boss[] phase3Script;
+    public int countDead;
 
     private void OnEnable()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         pause = FindAnyObjectByType<Pause>();
-
+        phase3Script = FindObjectsOfType<S3Boss>();
         controller = FindAnyObjectByType<EnemyParentController>();
 
         if(stage != 3)
@@ -49,6 +51,7 @@ public class BossBehavior : MonoBehaviour
     /// </summary>
     public void OnHit(float _damage)
     {
+        Debug.Log("Get hit");
         health -= _damage;
         if (health <= 0)
         {
@@ -72,6 +75,31 @@ public class BossBehavior : MonoBehaviour
                     {
                         nexPhase[i].SetActive(true);
                     }
+                }
+            }
+
+            else if(stage == 3)
+            {
+                Debug.Log("Stage 3 hit");
+                
+                for(int i = 0; i < phase3Script.Length; i++)
+                {
+                    Debug.Log("in for loop " + phase3Script[i].countDead);
+                    if (phase3Script[i] != null)
+                    {
+                        Debug.Log("Not null hit");
+                        phase3Script[i].countDead++;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                    
+                }
+
+                if (countDead == 4)
+                {
+                    SceneManager.LoadScene(4);
                 }
             }
             
