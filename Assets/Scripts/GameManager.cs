@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void InitializeHighScore()
+    public void InitializeHighScore()
     {
         if(PlayerPrefs.HasKey("highScore") == false)
         {

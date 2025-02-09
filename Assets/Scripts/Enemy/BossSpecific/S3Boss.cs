@@ -10,6 +10,8 @@ public class S3Boss : BossBehavior
     private float min = 1;
     private float max = 4;
 
+    
+
 
     private void Start()
     {

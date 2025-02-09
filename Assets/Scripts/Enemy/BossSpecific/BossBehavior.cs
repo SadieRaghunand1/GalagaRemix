@@ -15,7 +15,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private int stage;
 
-    [Header("Shooting - Stage 1 + all")]
+    [Header("Stage 1 + all")]
     [SerializeField] protected GameObject[] launchPos;
     [SerializeField] protected GameObject projectile;
     [SerializeField] private GameObject[] destPosS1;
@@ -25,6 +25,9 @@ public class BossBehavior : MonoBehaviour
 
     //Stage 2
     [SerializeField] protected GameObject likeEnemiesDead;
+
+    [Header("Stage 3")]
+    [SerializeField] private S3Boss thisPhaseScrpt;
 
     private void OnEnable()
     {
