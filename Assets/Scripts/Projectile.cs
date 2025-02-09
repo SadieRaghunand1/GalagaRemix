@@ -30,20 +30,32 @@ public class Projectile : MonoBehaviour
             if(_layer == 6) //Hits enemy, player shoots
             {
                 EnemyBehavior _enemyHit = _collision.gameObject.GetComponent<EnemyBehavior>();
+                
                 if(_enemyHit == null)
                 {
+
                     BossBehavior _boss = _collision.gameObject.GetComponent<BossBehavior>();
                     _boss.OnHit(projectileData.damageDealt);
                 }
                 else
                 {
-                    _enemyHit.OnHit(projectileData.damageDealt);
+                    
 
                     if (_enemyHit.gameObject.GetComponent<StealerEnemyBehavior>() != null)
                     {
                         StealerEnemyBehavior _stealer = _enemyHit.gameObject.GetComponent<StealerEnemyBehavior>();
                         _stealer.LoseShip();
 
+                    }
+
+                    else if(_enemyHit.gameObject.GetComponent<S3Boss>() != null)
+                    {
+                        S3Boss _boss = _enemyHit.gameObject.GetComponent<S3Boss>();
+                        _boss.OnHit(projectileData.damageDealt);
+                    }
+                    else
+                    {
+                        _enemyHit.OnHit(projectileData.damageDealt);
                     }
                 }
                 

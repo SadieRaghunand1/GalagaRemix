@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &24986036
 Transform:
   m_ObjectHideFlags: 0
@@ -320,8 +320,8 @@ MonoBehaviour:
   rb: {fileID: 24986040}
   patrolPoint: {fileID: 1785253830}
   divingPathPoints: []
-  minTimeDive: 0
-  maxTimeDive: 5
+  minTimeDive: 40
+  maxTimeDive: 100
 --- !u!61 &24986039
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -407,14 +407,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e74ca8689bead7d4da78b94bb4763679, type: 2}
-  health: 2
-  scoreText: {fileID: 0}
+  health: 1
+  scoreText: {fileID: 1778642294}
   stage: 3
   launchPos: []
   projectile: {fileID: 2211333795561794044, guid: 173749654ca062f498ed903cc724ce32, type: 3}
   destPosS1: []
   nexPhase: []
   likeEnemiesDead: {fileID: 0}
+  phase3Script:
+  - {fileID: 195087310}
+  - {fileID: 1574549118}
+  - {fileID: 356255250}
+  - {fileID: 24986035}
 --- !u!1 &25117114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1323,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   likeEnemiesDead: {fileID: 356705619}
+  phase3Script: []
 --- !u!61 &139169301
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1572,7 +1578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &195087311
 Transform:
   m_ObjectHideFlags: 0
@@ -1688,8 +1694,8 @@ MonoBehaviour:
   rb: {fileID: 195087315}
   patrolPoint: {fileID: 773499533}
   divingPathPoints: []
-  minTimeDive: 0
-  maxTimeDive: 5
+  minTimeDive: 40
+  maxTimeDive: 100
 --- !u!61 &195087314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1775,14 +1781,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e74ca8689bead7d4da78b94bb4763679, type: 2}
-  health: 2
-  scoreText: {fileID: 0}
+  health: 1
+  scoreText: {fileID: 1778642294}
   stage: 3
   launchPos: []
   projectile: {fileID: 2211333795561794044, guid: 173749654ca062f498ed903cc724ce32, type: 3}
   destPosS1: []
   nexPhase: []
   likeEnemiesDead: {fileID: 0}
+  phase3Script:
+  - {fileID: 195087310}
+  - {fileID: 1574549118}
+  - {fileID: 356255250}
+  - {fileID: 24986035}
 --- !u!1 &198785961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &356255251
 Transform:
   m_ObjectHideFlags: 0
@@ -2570,8 +2581,8 @@ MonoBehaviour:
   rb: {fileID: 356255255}
   patrolPoint: {fileID: 1394963099}
   divingPathPoints: []
-  minTimeDive: 0
-  maxTimeDive: 5
+  minTimeDive: 40
+  maxTimeDive: 100
 --- !u!61 &356255254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2657,14 +2668,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e74ca8689bead7d4da78b94bb4763679, type: 2}
-  health: 2
-  scoreText: {fileID: 0}
+  health: 1
+  scoreText: {fileID: 1778642294}
   stage: 3
   launchPos: []
   projectile: {fileID: 2211333795561794044, guid: 173749654ca062f498ed903cc724ce32, type: 3}
   destPosS1: []
   nexPhase: []
   likeEnemiesDead: {fileID: 0}
+  phase3Script:
+  - {fileID: 195087310}
+  - {fileID: 1574549118}
+  - {fileID: 356255250}
+  - {fileID: 24986035}
 --- !u!1 &356705619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2786,6 +2802,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   likeEnemiesDead: {fileID: 139169297}
+  phase3Script: []
 --- !u!61 &356705623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3936,7 +3953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430692496316740833, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444454682483790837, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: rb
@@ -4773,7 +4790,7 @@ MonoBehaviour:
   score: 0
   devMode: 0
   stage: 0
-  enemiesKilled: 34
+  enemiesKilled: 0
 --- !u!114 &625368558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4997,7 +5014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430692496316740833, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444454682483790837, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: rb
@@ -5524,7 +5541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430692496316740833, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444454682483790837, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: rb
@@ -7431,7 +7448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430692496316740833, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444454682483790837, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: rb
@@ -7941,7 +7958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1272606429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8121,6 +8138,7 @@ MonoBehaviour:
   - {fileID: 139169297}
   - {fileID: 356705619}
   likeEnemiesDead: {fileID: 0}
+  phase3Script: []
 --- !u!95 &1272606435
 Animator:
   serializedVersion: 5
@@ -9769,7 +9787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1574549119
 Transform:
   m_ObjectHideFlags: 0
@@ -9885,8 +9903,8 @@ MonoBehaviour:
   rb: {fileID: 1574549123}
   patrolPoint: {fileID: 920581449}
   divingPathPoints: []
-  minTimeDive: 0
-  maxTimeDive: 5
+  minTimeDive: 40
+  maxTimeDive: 100
 --- !u!61 &1574549122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9972,14 +9990,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e74ca8689bead7d4da78b94bb4763679, type: 2}
-  health: 2
-  scoreText: {fileID: 0}
+  health: 1
+  scoreText: {fileID: 1778642294}
   stage: 3
   launchPos: []
   projectile: {fileID: 2211333795561794044, guid: 173749654ca062f498ed903cc724ce32, type: 3}
   destPosS1: []
   nexPhase: []
   likeEnemiesDead: {fileID: 0}
+  phase3Script:
+  - {fileID: 195087310}
+  - {fileID: 1574549118}
+  - {fileID: 356255250}
+  - {fileID: 24986035}
 --- !u!1 &1578173975
 GameObject:
   m_ObjectHideFlags: 0
@@ -10850,7 +10873,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: e7b3a6bc99f1b7740ba5cdca1478cc55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -12401,7 +12424,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: e7b3a6bc99f1b7740ba5cdca1478cc55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12926,7 +12949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1430692496316740833, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3444454682483790837, guid: 64fbf909c970ccc40853cb1f38054754, type: 3}
       propertyPath: rb
@@ -13862,7 +13885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2095405379
 Transform:
   m_ObjectHideFlags: 0
@@ -14445,7 +14468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7212362511291871451, guid: 82bda2d6094cca044b1b6171e278aeb6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8896530952563699701, guid: 82bda2d6094cca044b1b6171e278aeb6, type: 3}
       propertyPath: scoreText
