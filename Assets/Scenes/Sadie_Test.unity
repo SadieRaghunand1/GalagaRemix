@@ -325,8 +325,8 @@ MonoBehaviour:
   rb: {fileID: 24986040}
   patrolPoint: {fileID: 1785253830}
   divingPathPoints: []
-  minTimeDive: 40
-  maxTimeDive: 100
+  minTimeDive: 2
+  maxTimeDive: 10
 --- !u!61 &24986039
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -426,6 +426,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   countDead: 0
+  enemyController: {fileID: 0}
 --- !u!1 &25117114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2019,7 @@ MonoBehaviour:
   likeEnemiesDead: {fileID: 356705619}
   phase3Script: []
   countDead: 0
+  enemyController: {fileID: 2126449399}
 --- !u!61 &139169301
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2424,8 +2426,8 @@ MonoBehaviour:
   rb: {fileID: 195087315}
   patrolPoint: {fileID: 773499533}
   divingPathPoints: []
-  minTimeDive: 40
-  maxTimeDive: 100
+  minTimeDive: 2
+  maxTimeDive: 10
 --- !u!61 &195087314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2525,6 +2527,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   countDead: 0
+  enemyController: {fileID: 0}
 --- !u!1 &198785961
 GameObject:
   m_ObjectHideFlags: 0
@@ -4532,8 +4535,8 @@ MonoBehaviour:
   rb: {fileID: 356255255}
   patrolPoint: {fileID: 1394963099}
   divingPathPoints: []
-  minTimeDive: 40
-  maxTimeDive: 100
+  minTimeDive: 2
+  maxTimeDive: 10
 --- !u!61 &356255254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4633,6 +4636,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   countDead: 0
+  enemyController: {fileID: 0}
 --- !u!1 &356705619
 GameObject:
   m_ObjectHideFlags: 0
@@ -4756,6 +4760,7 @@ MonoBehaviour:
   likeEnemiesDead: {fileID: 139169297}
   phase3Script: []
   countDead: 0
+  enemyController: {fileID: 2126449399}
 --- !u!61 &356705623
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13144,7 +13149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: e74ca8689bead7d4da78b94bb4763679, type: 2}
-  health: 10
+  health: 1
   scoreText: {fileID: 1778642294}
   stage: 1
   launchPos:
@@ -13162,6 +13167,7 @@ MonoBehaviour:
   likeEnemiesDead: {fileID: 0}
   phase3Script: []
   countDead: 0
+  enemyController: {fileID: 0}
 --- !u!95 &1272606435
 Animator:
   serializedVersion: 5
@@ -15326,8 +15332,8 @@ MonoBehaviour:
   rb: {fileID: 1574549123}
   patrolPoint: {fileID: 920581449}
   divingPathPoints: []
-  minTimeDive: 40
-  maxTimeDive: 100
+  minTimeDive: 2
+  maxTimeDive: 10
 --- !u!61 &1574549122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15427,6 +15433,7 @@ MonoBehaviour:
   - {fileID: 356255250}
   - {fileID: 24986035}
   countDead: 0
+  enemyController: {fileID: 0}
 --- !u!1 &1578173975
 GameObject:
   m_ObjectHideFlags: 0

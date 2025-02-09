@@ -70,7 +70,10 @@ public class StealerEnemyBehavior : EnemyBehavior
             shipStolen = false;
             playerCopy.GetComponent<SpriteRenderer>().enabled = false;
             playerCopy.transform.position = player.transform.position;
+            playerCopy.transform.parent = null;
+            playerCopy.transform.parent = player.transform;
             playerScript.BecomeDouble();
+            Destroy(this.gameObject);
         }
         
     }

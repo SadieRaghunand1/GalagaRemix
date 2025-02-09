@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 54
+  controlID: 41
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 55
+  controlID: 42
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 56
+  controlID: 43
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 57
+  controlID: 109
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -494,9 +494,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 84b30100
-      m_LastClickedID: 111492
-      m_ExpandedIDs: 9848ffffa054ffff62bbffff20beffff2cdafffff2fafffff6fafffff4ffffffdeda0000f6eb0000d0f4000062fc0000240a0100beb0010054b90100
+      m_SelectedIDs: 6e4f0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 7ef4feff3c39fffffc51ffffc858fffffe5efffffa69ffff0a74ffffd87dffffc686ffffb891ffff0695ffff3aa0fffffcacffffbac6ffff0adcffffd6e8ffff2ef7ffff12fbffff5a6f00006e780000f8800000c49200006699000098a8000096b00000debf00008ed70000b6f900004402010078110100d03e01006a490100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1226,7 +1226,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Sadie_Test_prefabs
+    - Assets/Scripts/Enemy/BossSpecific
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1234,16 +1234,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Sadie_Test_prefabs
+  - Assets/Scripts/Enemy/BossSpecific
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\GitHub\GalagaRemix
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: b0660000
-    m_LastClickedID: 26288
-    m_ExpandedIDs: 000000008466000086660000886600008a6600008c6600008e660000aa66000000ca9a3bffffff7f
+    m_SelectedIDs: b4660000
+    m_LastClickedID: 26292
+    m_ExpandedIDs: 000000008466000086660000886600008a6600008c6600008e66000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2202,7 +2202,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 68184
+  m_LastSelectedObjectID: 41672
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

@@ -30,12 +30,14 @@ public class BossBehavior : MonoBehaviour
     [Header("Stage 3")]
     [SerializeField] private S3Boss[] phase3Script;
     public int countDead;
+    [SerializeField] private EnemyParentController enemyController;
 
     private void OnEnable()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         pause = FindAnyObjectByType<Pause>();
-        phase3Script = FindObjectsOfType<S3Boss>();
+        //phase3Script = FindObjectsOfType<S3Boss>();
+        StartCoroutine(WaitToLoadS3BossList());
         controller = FindAnyObjectByType<EnemyParentController>();
 
         if(stage != 3)
@@ -74,7 +76,9 @@ public class BossBehavior : MonoBehaviour
                     for (int i = 0; i < nexPhase.Length; i++)
                     {
                         nexPhase[i].SetActive(true);
+                        
                     }
+                    enemyController.AssignPatrolPoints();
                 }
             }
 
@@ -135,7 +139,11 @@ public class BossBehavior : MonoBehaviour
         Shoot();
     }
 
-
+    protected IEnumerator WaitToLoadS3BossList()
+    {
+        yield return new WaitForEndOfFrame();
+        phase3Script = FindObjectsOfType<S3Boss>();
+    }
     
 
 }

@@ -12,14 +12,21 @@ public class CaptureRay : Projectile
     {
         if(_collision.gameObject.layer == 8)
         {
-            
+
             //shooter.StealShip();
+            
             shooter.HitShipSteal();
-            PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+            
             
             if(!gameManager.cheatmode)
             {
+                PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
                 _playerLives.GetHit();
+            }
+            else
+            {
+                PlayerMovement _playerMovement = _collision.gameObject.GetComponent<PlayerMovement>();
+                _playerMovement.BecomeSingle();
             }
             
             Destroy(this.gameObject);
