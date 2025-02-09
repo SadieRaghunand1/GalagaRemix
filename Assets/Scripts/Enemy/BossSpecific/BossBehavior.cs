@@ -9,6 +9,7 @@ public class BossBehavior : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
     private GameManager gameManager;
+    private Pause pause;
     protected EnemyParentController controller;
     public float health;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -28,6 +29,7 @@ public class BossBehavior : MonoBehaviour
     private void OnEnable()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        pause = FindAnyObjectByType<Pause>();
 
         controller = FindAnyObjectByType<EnemyParentController>();
 
@@ -76,16 +78,20 @@ public class BossBehavior : MonoBehaviour
 
     virtual protected void Shoot()
     {
-        
-        for(int i = 0; i < launchPos.Length; i++)
+        if(!pause.isPause)
         {
-            Stage1BossProjectile _p = Instantiate(projectile, launchPos[i].transform.position + new Vector3(0, -1, 0), launchPos[i].transform.rotation).GetComponent<Stage1BossProjectile>();
+            for (int i = 0; i < launchPos.Length; i++)
+            {
+                Stage1BossProjectile _p = Instantiate(projectile, launchPos[i].transform.position + new Vector3(0, -1, 0), launchPos[i].transform.rotation).GetComponent<Stage1BossProjectile>();
 
-            _p.destPosObj = destPosS1[i];
+                _p.destPosObj = destPosS1[i];
 
+            }
+
+            StartCoroutine(TimeShoot());
         }
-
-        StartCoroutine(TimeShoot());
+        
+       
     }
 
 

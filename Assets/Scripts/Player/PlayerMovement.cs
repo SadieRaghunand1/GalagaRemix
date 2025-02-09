@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public Sprite doublePlayer;
     public Sprite normalPlayer;
 
+    private Pause pause;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        pause = FindAnyObjectByType<Pause>();
     } //End InitValues()
 
     /// <summary>
@@ -83,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     private void Shoot()
     {
         
-        if (canShootDefault) 
+        if (canShootDefault && !pause.isPause) 
         {
             if(!doubleShip)
             {
@@ -106,13 +109,17 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void ShootQuick()
     {
-        Instantiate(projectileQuick, new Vector2(transform.position.x, transform.position.y + yOffset), projectileQuick.transform.rotation);
-
-        if(doubleShip && countShotsQ == 0)
+        if(!pause.isPause)
         {
-            StartCoroutine(ShootDoubleQuick());
-            
-        } 
+            Instantiate(projectileQuick, new Vector2(transform.position.x, transform.position.y + yOffset), projectileQuick.transform.rotation);
+
+            if (doubleShip && countShotsQ == 0)
+            {
+                StartCoroutine(ShootDoubleQuick());
+
+            }
+        }
+        
     } //END ShootQuick()
 
     /// <summary>

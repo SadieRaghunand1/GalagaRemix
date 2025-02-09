@@ -20,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     public EnemyData enemyData;
     public float speed;
     private GameManager gameManager;
+    private Pause pause;
     [SerializeField] float health;
     [SerializeField] protected GameObject projectile;
     [SerializeField] protected float yOffset;
@@ -46,6 +47,7 @@ public class EnemyBehavior : MonoBehaviour
     public void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        pause = FindFirstObjectByType<Pause>();
         controller = FindFirstObjectByType<EnemyParentController>();
         
         //transform.position = waypoints[0].transform.position;
@@ -179,6 +181,7 @@ public class EnemyBehavior : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        if(!pause.isPause)
         Instantiate(projectile, new Vector2(transform.position.x, transform.position.y + yOffset), projectile.transform.rotation);
     } //END Shoot()
 
