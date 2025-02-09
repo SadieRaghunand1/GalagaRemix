@@ -43,11 +43,12 @@ public class StealerEnemyBehavior : EnemyBehavior
 
     public void HitShipSteal()
     {
-        //capturedPlayer = Instantiate(playerCopy, player.transform.position, transform.rotation);
+        
         playerCopy.transform.parent = null;
         playerCopy.transform.parent = transform;
         playerCopy.GetComponent<SpriteRenderer>().enabled = true;
         shipStolen = true;
+        playerCopy.transform.position = capturePos.position;
     }
     
     public void StealShip()
@@ -58,7 +59,7 @@ public class StealerEnemyBehavior : EnemyBehavior
         CaptureRay _rayScript = _ray.GetComponent<CaptureRay>();
 
         _rayScript.shooter = this;
-        playerCopy.transform.position = capturePos.position;
+        //playerCopy.transform.position = capturePos.position;
         StartCoroutine(TimeStealShip());
     }
 

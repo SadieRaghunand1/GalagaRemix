@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BossEnemyS3
+  - HighScoretext
   layers:
   - Default
   - TransparentFX

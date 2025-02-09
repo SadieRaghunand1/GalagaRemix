@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject gameManagerPrefab;
+
+    private void Start()
+    {
+        if(FindAnyObjectByType<GameManager>() == null)
+        {
+            Instantiate(gameManagerPrefab);
+        }
+    }
+
     public void startGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

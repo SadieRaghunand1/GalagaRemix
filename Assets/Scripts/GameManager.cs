@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //public bool masterGM;
     public float score;
     public bool devMode; //If checked, delete high score at end of game
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI highScoreText;
 
+    public List<GameManager> gameManagers;
+
     [Header("Choices")]
     public bool defaultShip;
     public bool cheatmode; 
@@ -22,12 +25,15 @@ public class GameManager : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        //ShowHighScore();
+        
+        
 
-        ShowHighScore();
     }
+
 
     private void ShowHighScore()
     {

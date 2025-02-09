@@ -22,7 +22,14 @@ public class PlayerLives : MonoBehaviour
     private void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
-        
+        if(gameManager.cheatmode == true)
+        {
+            Debug.Log("Cheat mode enabled");
+            for (int i = 0; i < healthUI.Length; i++)
+            {
+                healthUI[i].enabled = false;
+            }
+        }
         
     }
 
@@ -51,7 +58,11 @@ public class PlayerLives : MonoBehaviour
 
     public void LoadLoseScene()
     {
-        SceneManager.LoadScene(5);
+        if (gameManager.cheatmode == false)
+        {
+            SceneManager.LoadScene(5);
+        }
+        
     }
 
 
