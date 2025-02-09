@@ -28,14 +28,14 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] protected GameObject likeEnemiesDead;
 
     [Header("Stage 3")]
-    [SerializeField] private List<S3Boss> phase3Script;
+    [SerializeField] private S3Boss[] phase3Script;
     public int countDead;
 
     private void OnEnable()
     {
         gameManager = FindAnyObjectByType<GameManager>();
         pause = FindAnyObjectByType<Pause>();
-
+        phase3Script = FindObjectsOfType<S3Boss>();
         controller = FindAnyObjectByType<EnemyParentController>();
 
         if(stage != 3)
@@ -81,12 +81,13 @@ public class BossBehavior : MonoBehaviour
             else if(stage == 3)
             {
                 Debug.Log("Stage 3 hit");
-                //phase3Script.RemoveAt(phase3Script.Count - 1);
                 
-                for(int i = 0; i < phase3Script.Count; i++)
+                for(int i = 0; i < phase3Script.Length; i++)
                 {
+                    Debug.Log("in for loop " + phase3Script[i].countDead);
                     if (phase3Script[i] != null)
                     {
+                        Debug.Log("Not null hit");
                         phase3Script[i].countDead++;
                     }
                     else
