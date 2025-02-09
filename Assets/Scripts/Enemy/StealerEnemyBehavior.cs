@@ -63,10 +63,14 @@ public class StealerEnemyBehavior : EnemyBehavior
 
     public void LoseShip()
     {
-        shipStolen=false;
-        playerCopy.GetComponent<SpriteRenderer>().enabled = false;
-        playerCopy.transform.position = player.transform.position;
-        playerScript.BecomeDouble();
+        if(shipStolen)
+        {
+            shipStolen = false;
+            playerCopy.GetComponent<SpriteRenderer>().enabled = false;
+            playerCopy.transform.position = player.transform.position;
+            playerScript.BecomeDouble();
+        }
+        
     }
 
 
