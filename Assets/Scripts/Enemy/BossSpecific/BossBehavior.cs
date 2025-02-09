@@ -80,7 +80,7 @@ public class BossBehavior : MonoBehaviour
 
             else if(stage == 3)
             {
-                Debug.Log("Stage 3 hit");
+                //Debug.Log("Stage 3 hit");
                 
                 for(int i = 0; i < phase3Script.Length; i++)
                 {
@@ -92,6 +92,7 @@ public class BossBehavior : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Counts as skip");
                         continue;
                     }
                     

@@ -80,12 +80,12 @@ public class PlayerMovement : MonoBehaviour
         //Append Shoot() to shoot action depending on chosen ship
         if (gameManager.defaultShip)
         {
-            Debug.Log("Default ship");
+            //Debug.Log("Default ship");
             playerControls.Player.Shoot.started += _ => Shoot();
         }
         else if (!gameManager.defaultShip)
         {
-            Debug.Log("Not default ship");
+            //Debug.Log("Not default ship");
             playerControls.Player.Shoot.started += _ => ShootQuick();
         }
 
@@ -149,13 +149,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!doubleShip)
             {
-                Debug.Log("Shoot as single");
+                //Debug.Log("Shoot as single");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
             }
             
             if(doubleShip && countShotsN == 0)
             {
-                Debug.Log("Shoot as double");
+                //Debug.Log("Shoot as double");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
                 StartCoroutine(ShootCooldown(0.2f));
             }

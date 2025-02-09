@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         
         if(_collision.gameObject.layer == _layer)
         {
-            Debug.Log(_layer);
+            //Debug.Log(_layer);
 
             if(_layer == 6) //Hits enemy, player shoots
             {
