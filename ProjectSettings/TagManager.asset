@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BossEnemyS3
   layers:
   - Default
   - TransparentFX
