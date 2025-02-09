@@ -7,11 +7,17 @@ public class options : MonoBehaviour
 {
     public GameObject slowShip;
     public GameObject fastShip;
+    public GameObject enabledCheats;
+    public GameObject disabledCheats;
+    public bool cheat;
 
     public void Start()
     {
         slowShip.SetActive(false);
         fastShip.SetActive(false);
+        enabledCheats.SetActive(false);
+        disabledCheats.SetActive(true);
+        cheat = false;
     }
 
     public void mainMenu()
@@ -36,6 +42,19 @@ public class options : MonoBehaviour
 
     public void cheats()
     {
-    //code here
+        //code here
+        if (cheat == false)
+        {
+            enabledCheats.SetActive(true);
+            disabledCheats.SetActive(false);
+            cheat = true;
+        }
+        if (cheat == true)
+        {
+            enabledCheats.SetActive(false);
+            disabledCheats.SetActive(true);
+            cheat = false;
+        }
+
     }
 }
