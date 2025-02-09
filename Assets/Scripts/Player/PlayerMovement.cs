@@ -3,9 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static PlayerLives;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [System.Serializable]
+    public struct PlayerSprites
+    {
+        public Sprite singleSprite;
+        public Sprite doubleSprite;
+    }
+
+
+
+    private GameManager gameManager;
     private PlayerController1 playerControls;
     float horizontal;
     [SerializeField] private Rigidbody2D rb;
@@ -25,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     public Sprite normalPlayer;
 
     private Pause pause;
+
+    public PlayerSprites[] spriteOptions;
+    public PlayerSprites spriteChosen;
+    private StealerEnemyBehavior stealEnemies; 
 
     // Start is called before the first frame update
     void Awake()
@@ -52,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
 
     void InitValues()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
+
         //Attach player controls for movement
         playerControls = new PlayerController1();
 
@@ -59,16 +77,57 @@ public class PlayerMovement : MonoBehaviour
         playerControls.Player.Movement.canceled += _ => horizontal = 0;
 
 
-        //Append Shoot() to shoot action
-        playerControls.Player.Shoot.started += _ => Shoot();
+        //Append Shoot() to shoot action depending on chosen ship
+        if (gameManager.defaultShip)
+        {
+            Debug.Log("Default ship");
+            playerControls.Player.Shoot.started += _ => Shoot();
+        }
+        else if (!gameManager.defaultShip)
+        {
+            Debug.Log("Not default ship");
+            playerControls.Player.Shoot.started += _ => ShootQuick();
+        }
 
-        //Append ShootQuick to shoot action
-        playerControls.Player.ShootQuick.started += _ => ShootQuick();
 
+
+        doubleShip = false;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         pause = FindAnyObjectByType<Pause>();
+
+        ChangePlayerSprites();
     } //End InitValues()
+
+
+    private void ChangePlayerSprites()
+    {
+        if (gameManager.defaultShip)
+        {
+            spriteChosen = spriteOptions[0];
+        }
+        else if (!gameManager.defaultShip)
+        {
+            spriteChosen = spriteOptions[1];
+        }
+
+        spriteRenderer.sprite = spriteChosen.singleSprite;
+        normalPlayer = spriteChosen.singleSprite;
+        doublePlayer = spriteChosen.doubleSprite;
+
+        //Get player copy 
+        stealEnemies = FindFirstObjectByType<StealerEnemyBehavior>();
+        stealEnemies.playerCopy.GetComponent<SpriteRenderer>().sprite = spriteChosen.singleSprite;
+        //allStealEnemies = FindObjectsOfType<StealerEnemyBehavior>();
+        /*for(int i = 0; i < allStealEnemies.Length; i++)
+        {
+            allStealEnemies[i].playerCopy.GetComponent<SpriteRenderer>().sprite = spriteChosen.singleSprite;
+        }*/
+
+    }
+
+
+
 
     /// <summary>
     /// Get velocityon x axis and use for movement
@@ -90,14 +149,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!doubleShip)
             {
+                Debug.Log("Shoot as single");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
             }
             
             if(doubleShip && countShotsN == 0)
             {
+                Debug.Log("Shoot as double");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
                 StartCoroutine(ShootCooldown(0.2f));
             }
+
             StartCoroutine(ShootCooldown());
         }
         

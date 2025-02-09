@@ -11,6 +11,8 @@ public class options : MonoBehaviour
     public GameObject disabledCheats;
     public bool cheat;
 
+    public GameManager gameManager;
+
     public void Start()
     {
         slowShip.SetActive(false);
@@ -18,6 +20,8 @@ public class options : MonoBehaviour
         enabledCheats.SetActive(false);
         disabledCheats.SetActive(true);
         cheat = false;
+
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     public void mainMenu()
@@ -26,18 +30,27 @@ public class options : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Player chooses default ship, slow bullets
+    /// </summary>
     public void slow()
     {
         slowShip.SetActive(true);
         fastShip.SetActive(false);
         //code goes here
+        gameManager.defaultShip = true;
     }
 
+
+    /// <summary>
+    /// Player chooses second ship, fast bullets
+    /// </summary>
     public void fast()
     {
         slowShip.SetActive(false);
         fastShip.SetActive(true);
         //code goes here
+        gameManager.defaultShip = false;
     }
 
     public void cheats()
@@ -45,15 +58,19 @@ public class options : MonoBehaviour
         //code here
         if (cheat == false)
         {
+            //Debug.Log("Cheats is false turn true"); 
             enabledCheats.SetActive(true);
             disabledCheats.SetActive(false);
             cheat = true;
+            gameManager.cheatmode = true;
         }
-        if (cheat == true)
+        else if (cheat == true)
         {
+            //Debug.Log("Cheats is true turn false");
             enabledCheats.SetActive(false);
             disabledCheats.SetActive(true);
             cheat = false;
+            gameManager.cheatmode = false;
         }
 
     }

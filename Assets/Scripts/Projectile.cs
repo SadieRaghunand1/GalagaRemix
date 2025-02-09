@@ -9,23 +9,29 @@ public class Projectile : MonoBehaviour
     public ProjectileData projectileData;
     [SerializeField] int layer;
     [SerializeField] Vector2 direction;
+    protected GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
 
     private void FixedUpdate()
     {
         MoveForward();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         HitEnemy(collision, layer);
     }
 
-    virtual protected void HitEnemy(Collision2D _collision, int _layer)
+    virtual protected void HitEnemy(Collider2D _collision, int _layer)
     {
         
         if(_collision.gameObject.layer == _layer)
         {
-            
+            Debug.Log(_layer);
 
             if(_layer == 6) //Hits enemy, player shoots
             {
@@ -67,8 +73,12 @@ public class Projectile : MonoBehaviour
             }
             else if(_layer == 8) //Hits player, enemy shoots
             {
-                PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
-                _playerLives.GetHit();
+                if(!gameManager.cheatmode)
+                {
+                    PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+                    _playerLives.GetHit();
+                }
+                
                
                 Destroy(this.gameObject);
             }

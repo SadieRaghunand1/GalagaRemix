@@ -8,14 +8,20 @@ public class CaptureRay : Projectile
 
    
 
-    protected override void HitEnemy(Collision2D _collision, int _layer)
+    protected override void HitEnemy(Collider2D _collision, int _layer)
     {
         if(_collision.gameObject.layer == 8)
         {
+            
             //shooter.StealShip();
             shooter.HitShipSteal();
             PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
-            _playerLives.GetHit();
+            
+            if(!gameManager.cheatmode)
+            {
+                _playerLives.GetHit();
+            }
+            
             Destroy(this.gameObject);
         }
     }

@@ -22,22 +22,13 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ShootQuick",
-                    "type": "Button",
-                    "id": "673eba3e-cbf4-4e29-941c-7b1fce49cb88",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "c4c46bc6-968a-4496-9a7e-63e3fc3ffbb9",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -110,17 +101,6 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "35495ed6-a11e-4dab-8989-5594a2744ce6",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "ShootQuick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
