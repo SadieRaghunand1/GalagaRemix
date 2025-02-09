@@ -176,10 +176,13 @@ MonoBehaviour:
   health: 1
   projectile: {fileID: 7256697958172438889, guid: 174bab5f2f64f2e488660b83e674fc74, type: 3}
   yOffset: -1
-  minTime: 2
-  maxTime: 5
+  minTime: 3
+  maxTime: 6
+  scoreText: {fileID: 0}
   state: 0
   waypoints: []
   rb: {fileID: 0}
   patrolPoint: {fileID: 0}
   divingPathPoints: []
+  minTimeDive: 5
+  maxTimeDive: 30
