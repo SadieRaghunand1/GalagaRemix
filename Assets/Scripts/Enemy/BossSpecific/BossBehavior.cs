@@ -24,6 +24,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private GameObject[] nexPhase;
     private float minShootTime = 1f;
     private float maxShootTime = 3f;
+    [SerializeField] private ParticleSystem deathParticle;
 
     //Stage 2
     [SerializeField] protected GameObject likeEnemiesDead;
@@ -59,7 +60,8 @@ public class BossBehavior : MonoBehaviour
         if (health <= 0)
         {
             gameManager.ChangeScore(enemyData.scoreWhenDead, scoreText);
-
+            deathParticle.gameObject.transform.position = this.gameObject.transform.position;
+            deathParticle.Play();
             if(stage == 1)
             {
                 for (int i = 0; i < nexPhase.Length; i++)
