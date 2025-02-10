@@ -17,7 +17,8 @@ public class PlayerLives : MonoBehaviour
     [Header("FadeIn/Out")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     private float alphaChange = 0.1f;
-     
+
+    [SerializeField] private AudioSource audioSource;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class PlayerLives : MonoBehaviour
         Debug.Log("Player Hit");
 
         --lives;
+        audioSource.Play();
         healthUI[lives].enabled = false;
         playerMovement.BecomeSingle();
         //Play explosion animation

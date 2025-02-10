@@ -41,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerSprites[] spriteOptions;
     public PlayerSprites spriteChosen;
-    private StealerEnemyBehavior stealEnemies; 
+    private StealerEnemyBehavior[] stealEnemies;
+
+    [SerializeField] private AudioSource audioSource; 
+
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -135,8 +139,13 @@ public class PlayerMovement : MonoBehaviour
         doublePlayer = spriteChosen.doubleSprite;
 
         //Get player copy 
-        stealEnemies = FindFirstObjectByType<StealerEnemyBehavior>();
-        stealEnemies.playerCopy.GetComponent<SpriteRenderer>().sprite = spriteChosen.singleSprite;
+        stealEnemies = FindObjectsByType<StealerEnemyBehavior>(FindObjectsSortMode.None);
+
+        for(int i = 0; i < stealEnemies.Length; i++)
+        {
+            stealEnemies[i].playerCopy.GetComponent<SpriteRenderer>().sprite = spriteChosen.singleSprite;
+        }
+        
         //allStealEnemies = FindObjectsOfType<StealerEnemyBehavior>();
         /*for(int i = 0; i < allStealEnemies.Length; i++)
         {
@@ -155,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Horizontal " + horizontal);
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        _inputText.text = horizontal.ToString();
+        //_inputText.text = horizontal.ToString();
 
        // rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
 
@@ -184,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(ShootCooldown(0.2f));
             }
 
+            audioSource.Play();
             StartCoroutine(ShootCooldown());
         }
         
@@ -204,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(ShootDoubleQuick());
 
             }
+
+            audioSource.Play();
         }
         
     } //END ShootQuick()

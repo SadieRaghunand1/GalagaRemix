@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class BossBehavior : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
+    [SerializeField] private AudioSource audioSource;
     private GameManager gameManager;
     private Pause pause;
     protected EnemyParentController controller;
@@ -118,6 +119,7 @@ public class BossBehavior : MonoBehaviour
         {
             for (int i = 0; i < launchPos.Length; i++)
             {
+                audioSource.Play();
                 Stage1BossProjectile _p = Instantiate(projectile, launchPos[i].transform.position + new Vector3(0, -1, 0), launchPos[i].transform.rotation).GetComponent<Stage1BossProjectile>();
 
                 _p.destPosObj = destPosS1[i];
