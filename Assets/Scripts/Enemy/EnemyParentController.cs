@@ -193,7 +193,7 @@ public class EnemyParentController : MonoBehaviour
         }
         
 
-        if ((timer <= 0 || gameManager.enemiesKilled == 31) && gameManager.stage == 1)
+        if ((timer <= 0 || gameManager.enemiesKilled == 29) && gameManager.stage == 1)
         {
             Debug.Log("Switch");
             //timerText.enabled = false;

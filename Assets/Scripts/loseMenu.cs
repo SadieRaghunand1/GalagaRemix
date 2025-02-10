@@ -13,6 +13,7 @@ public class loseMenu : MonoBehaviour
     private void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        gameManager.enemiesKilled = 0;
         scoretext.text = "Score: " + gameManager.score;
     }
 

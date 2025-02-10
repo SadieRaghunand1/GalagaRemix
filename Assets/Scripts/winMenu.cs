@@ -13,6 +13,7 @@ public class winMenu : MonoBehaviour
     private void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        gameManager.enemiesKilled = 0;
         scoretext.text = "Score: " + gameManager.score;
     }
 

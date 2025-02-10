@@ -180,18 +180,26 @@ public class PlayerMovement : MonoBehaviour
         
         if (canShootDefault && !pause.isPause) 
         {
-            if(!doubleShip)
+            Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
+
+            if (doubleShip && countShotsN == 0)
+            {
+                StartCoroutine(ShootDefaultDouble());
+            }
+
+            /*if(!doubleShip)
             {
                 //Debug.Log("Shoot as single");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
+                StartCoroutine(ShootDefaultDouble());
             }
             
             if(doubleShip && countShotsN == 0)
             {
                 //Debug.Log("Shoot as double");
                 Instantiate(projectileDefault, new Vector2(transform.position.x, transform.position.y + yOffset), projectileDefault.transform.rotation);
-                StartCoroutine(ShootCooldown(0.2f));
-            }
+                //StartCoroutine(ShootCooldown(0.2f));
+            }*/
 
             audioSource.Play();
             StartCoroutine(ShootCooldown());
@@ -265,7 +273,20 @@ public class PlayerMovement : MonoBehaviour
         canShootDefault = true;
     } //END ShootCooldow()
 
-
+    private IEnumerator ShootDefaultDouble()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if(countShotsN == 0)
+        {
+            canShootDefault = true;
+            Shoot();
+            countShotsN++;
+        }
+        else
+        {
+            countShotsN = 0;
+        }
+    }
     private IEnumerator ShootDoubleQuick()
     {
         yield return new WaitForSeconds(0.1f);

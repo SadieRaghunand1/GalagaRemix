@@ -123,7 +123,7 @@ public class BossBehavior : MonoBehaviour
             {
                 audioSource.Play();
                 Stage1BossProjectile _p = Instantiate(projectile, launchPos[i].transform.position + new Vector3(0, -1, 0), launchPos[i].transform.rotation).GetComponent<Stage1BossProjectile>();
-
+                Debug.Log("Boss Shoot");
                 _p.destPosObj = destPosS1[i];
 
             }
