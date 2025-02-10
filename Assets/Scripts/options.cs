@@ -13,6 +13,8 @@ public class options : MonoBehaviour
 
     public GameManager gameManager;
 
+    [SerializeField] private AudioSource audioSource;
+
     public void Start()
     {
         slowShip.SetActive(false);
@@ -26,6 +28,7 @@ public class options : MonoBehaviour
 
     public void mainMenu()
     {
+        audioSource.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
 
     }
@@ -35,6 +38,7 @@ public class options : MonoBehaviour
     /// </summary>
     public void slow()
     {
+        audioSource.Play();
         slowShip.SetActive(true);
         fastShip.SetActive(false);
         //code goes here
@@ -47,6 +51,7 @@ public class options : MonoBehaviour
     /// </summary>
     public void fast()
     {
+        audioSource.Play();
         slowShip.SetActive(false);
         fastShip.SetActive(true);
         //code goes here
@@ -55,6 +60,7 @@ public class options : MonoBehaviour
 
     public void cheats()
     {
+        audioSource.Play();
         //code here
         if (cheat == false)
         {
