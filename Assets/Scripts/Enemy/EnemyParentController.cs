@@ -202,6 +202,7 @@ public class EnemyParentController : MonoBehaviour
 
         if(timer <= 0 && gameManager.stage == 2)
         {
+            Debug.Log("Supposed to be boss stage, time out");
             SceneManager.LoadScene(5);
         }
     }

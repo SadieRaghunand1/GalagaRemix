@@ -73,9 +73,10 @@ public class StealerEnemyBehavior : EnemyBehavior
             playerCopy.transform.parent = null;
             playerCopy.transform.parent = player.transform;
             playerScript.BecomeDouble();
-            Destroy(this.gameObject);
+            
         }
-        
+
+        Destroy(this.gameObject);
     }
 
 
