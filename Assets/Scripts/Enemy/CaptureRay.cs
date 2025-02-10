@@ -15,7 +15,11 @@ public class CaptureRay : Projectile
 
             //shooter.StealShip();
             
-            shooter.HitShipSteal();
+            if(shooter != null)
+            {
+                shooter.HitShipSteal();
+            }
+            
             
             
             if(!gameManager.cheatmode)

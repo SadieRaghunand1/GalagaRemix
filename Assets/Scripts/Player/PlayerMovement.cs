@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerLives;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
         public Sprite doubleSprite;
     }
 
-
-
+    private Vector2 move;
+    [SerializeField] private TextMeshProUGUI _inputText;
     private GameManager gameManager;
     private PlayerController1 playerControls;
     float horizontal;
@@ -45,12 +46,30 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        
         InitValues();
+        //playerControls.Enable();
         //Testing
         //Instantiate(projectile);
     }
 
+    private void Update()
+    {
+        move.x = Input.GetAxisRaw("Horizontal");
 
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if(gameManager.defaultShip)
+            {
+                Shoot();
+            }
+            else
+            {
+                ShootQuick();
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -59,11 +78,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        playerControls.Enable();
+       // playerControls.Enable();
     }
     private void OnDisable()
     {
-        playerControls.Disable();
+        //playerControls.Disable();
     }
 
     void InitValues()
@@ -71,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
 
         //Attach player controls for movement
-        playerControls = new PlayerController1();
+        /*playerControls = new PlayerController1();
 
         playerControls.Player.Movement.performed += ctx => horizontal = ctx.ReadValue<float>();
         playerControls.Player.Movement.canceled += _ => horizontal = 0;
@@ -88,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Not default ship");
             playerControls.Player.Shoot.started += _ => ShootQuick();
         }
-
+       */
 
 
         doubleShip = false;
@@ -135,7 +154,12 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         //Debug.Log("Horizontal " + horizontal);
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //_inputText.text = horizontal.ToString();
+
+        rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+
+
 
     } //END Walk()
 
