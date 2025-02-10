@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         //Instantiate(projectile);
     }
 
-    private void Update()
+    /*private void Update()
     {
         move.x = Input.GetAxisRaw("Horizontal");
 
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 ShootQuick();
             }
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {
@@ -78,11 +78,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-       // playerControls.Enable();
+        playerControls.Enable();
     }
     private void OnDisable()
     {
-        //playerControls.Disable();
+        playerControls.Disable();
     }
 
     void InitValues()
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
 
         //Attach player controls for movement
-        /*playerControls = new PlayerController1();
+        playerControls = new PlayerController1();
 
         playerControls.Player.Movement.performed += ctx => horizontal = ctx.ReadValue<float>();
         playerControls.Player.Movement.canceled += _ => horizontal = 0;
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Not default ship");
             playerControls.Player.Shoot.started += _ => ShootQuick();
         }
-       */
+       
 
 
         doubleShip = false;
@@ -154,10 +154,10 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         //Debug.Log("Horizontal " + horizontal);
-        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        //_inputText.text = horizontal.ToString();
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        _inputText.text = horizontal.ToString();
 
-        rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+       // rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
 
 
 
