@@ -15,6 +15,7 @@ public class loseMenu : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         gameManager.enemiesKilled = 0;
         scoretext.text = "Score: " + gameManager.score;
+        gameManager.score = 0;
     }
 
     public void mainMenu()

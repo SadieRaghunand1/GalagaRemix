@@ -19,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public EnemyData enemyData;
     public float speed;
-    private GameManager gameManager;
+    protected GameManager gameManager;
     private Pause pause;
     [SerializeField] float health;
     [SerializeField] protected GameObject projectile;

@@ -36,7 +36,7 @@ public class StealerEnemyBehavior : EnemyBehavior
         if(shipStolen)
         {
             Debug.Log("Ship stolen");
-            playerCopyRB.position = Vector2.MoveTowards(playerCopyRB.position, transform.position + new Vector3(0, yOffset, 0), (speed * 2) * Time.deltaTime); // + new Vector3(0, yOffset, 0)
+            playerCopyRB.position = Vector2.MoveTowards(playerCopyRB.position, transform.position + new Vector3(0, yOffset, 0), (speed * 2) * Time.deltaTime); 
            // playerCopy.transform.position = capturePos.position;
         }
     }
@@ -75,7 +75,7 @@ public class StealerEnemyBehavior : EnemyBehavior
             playerScript.BecomeDouble();
             
         }
-
+        //gameManager.enemiesKilled++;
         Destroy(this.gameObject);
     }
 

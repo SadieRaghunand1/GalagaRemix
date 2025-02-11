@@ -220,6 +220,7 @@ public class EnemyParentController : MonoBehaviour
             }
             else
             {
+                Debug.Log("Run switch stage, unable");
                 continue;
             }
             
