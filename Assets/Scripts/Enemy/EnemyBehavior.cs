@@ -172,6 +172,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             gameManager.ChangeScore(enemyData.scoreWhenDead, scoreText);
             gameManager.enemiesKilled++;
+            Debug.Log("Enemies killed " + gameManager.enemiesKilled);
             Destroy(gameObject);
         }
     }//END OnHit()
