@@ -1943,7 +1943,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100205762}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -5963,6 +5963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playImage: {fileID: 100205762}
+  menu: 0
+  canvas: {fileID: 100205766}
 --- !u!1 &389578380
 GameObject:
   m_ObjectHideFlags: 0
@@ -16139,9 +16141,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1784414370}
+      - m_Target: {fileID: 389147422}
         m_TargetAssemblyTypeName: pauseMenuButton, Assembly-CSharp
-        m_MethodName: howPlay
+        m_MethodName: HideHowToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20164,6 +20166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playImage: {fileID: 100205762}
+  menu: 0
+  canvas: {fileID: 0}
 --- !u!224 &1784414371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21436,7 +21440,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 389147422}
         m_TargetAssemblyTypeName: pauseMenuButton, Assembly-CSharp
-        m_MethodName: howPlay
+        m_MethodName: ShowHowToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22910,7 +22914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2062166750
 MonoBehaviour:
   m_ObjectHideFlags: 0
