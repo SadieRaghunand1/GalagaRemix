@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject playImage;
     public bool isPause;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Pause : MonoBehaviour
             if (isPause)
             {
                 resumeGame();
+                playImage.SetActive(false);
             }
             else 
             {
