@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   scoreWhenDead: 2000
-  speed: 10
+  speed: 5

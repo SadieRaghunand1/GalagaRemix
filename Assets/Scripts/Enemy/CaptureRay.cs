@@ -6,7 +6,11 @@ public class CaptureRay : Projectile
 {
     public StealerEnemyBehavior shooter;
 
-   
+    protected void Start()
+    {
+        base.Start();
+        StartCoroutine(DestroyBullet());
+    }
 
     protected override void HitEnemy(Collider2D _collision, int _layer)
     {
@@ -19,12 +23,12 @@ public class CaptureRay : Projectile
             {
                 shooter.HitShipSteal();
             }
-            
-            
-            
-            if(!gameManager.cheatmode)
+
+
+            PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+            if (!gameManager.cheatmode)
             {
-                PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+                
                 _playerLives.GetHit();
             }
             else
@@ -32,8 +36,14 @@ public class CaptureRay : Projectile
                 PlayerMovement _playerMovement = _collision.gameObject.GetComponent<PlayerMovement>();
                 _playerMovement.BecomeSingle();
             }
-            
+            _playerLives.deathParticle.Play();
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(this.gameObject);
     }
 }

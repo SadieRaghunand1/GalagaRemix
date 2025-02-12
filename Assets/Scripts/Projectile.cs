@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] Vector2 direction;
     protected GameManager gameManager;
 
-    private void Start()
+    protected void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
     }
@@ -73,13 +73,15 @@ public class Projectile : MonoBehaviour
             }
             else if(_layer == 8) //Hits player, enemy shoots
             {
-                if(!gameManager.cheatmode)
+                PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+                if (!gameManager.cheatmode)
                 {
-                    PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
+                    //PlayerLives _playerLives = _collision.gameObject.GetComponent<PlayerLives>();
                     _playerLives.GetHit();
+                    
                 }
-                
-               
+                _playerLives.deathParticle.Play();
+
                 Destroy(this.gameObject);
             }
             

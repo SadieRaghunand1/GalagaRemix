@@ -13,6 +13,7 @@ public class PlayerLives : MonoBehaviour
     int lives = 3;
     [SerializeField] private Animator animator;
     [SerializeField] private Image[] healthUI;
+    public ParticleSystem deathParticle;
 
     [Header("FadeIn/Out")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -44,8 +45,7 @@ public class PlayerLives : MonoBehaviour
         audioSource.Play();
         healthUI[lives].enabled = false;
         playerMovement.BecomeSingle();
-        //Play explosion animation
-        //animator.SetTrigger()
+        //deathParticle.Play();
         StartCoroutine(FadeOut());
 
         if (lives <= 0)
